@@ -26,14 +26,14 @@ const defaultAllowedOrigins = [
 
 const envAllowedOrigins = (process.env.CLIENT_URL || "")
   .split(",")
-  .map((origin) => origin.trim())
+  .map((origin) => origin.trim().replace(/\/+$/, ""))
   .filter(Boolean);
 
 const allowedOrigins = [
   ...defaultAllowedOrigins,
   ...envAllowedOrigins,
-  /^https:\/\/roommate-3f11-[a-z0-9-]+\.vercel\.app$/,
-  /^https:\/\/roommate-3f11-[a-z0-9-]+-vishalborude666s-projects\.vercel\.app$/,
+  /^https:\/\/[a-z0-9-]+\.vercel\.app$/,
+  /^https:\/\/[a-z0-9-]+-vishalborude666s-projects\.vercel\.app$/,
 ];
 
 const isAllowedOrigin = (origin) => {
